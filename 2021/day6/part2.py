@@ -14,15 +14,15 @@ length of F[N], to get the total amount of fish in the second array,
 we take the sum of F[0..=8].
 """
 
-from day6part1 import get_input
+from part1 import get_input
 
 
-def day6part2():
-    fishes = get_input()
+def day6part2(file_name: str) -> int:
+    fishes = get_input(file_name)
     days = convert_to_days(fishes)
     for i in range(256):
         days = day_pass(days)
-    print(f"Answer: {sum(days)}")
+    return sum(days)
 
 
 def convert_to_days(fishes: list[int]) -> list[int]:
@@ -46,4 +46,4 @@ def day_pass(days: list[int]) -> list[int]:
 
 
 if __name__ == '__main__':
-    day6part2()
+    print(day6part2('input.txt'))

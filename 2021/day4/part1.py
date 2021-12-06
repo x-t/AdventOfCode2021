@@ -1,17 +1,16 @@
-def day4task1():
-    drawn, boards = get_data()
+def day4part1(file_input: str) -> int:
+    drawn, boards = get_data(file_input)
 
     drawn_to_be_checked = []
     for draw in drawn:
         drawn_to_be_checked.append(int(draw))
         for board in boards:
             if check_win(board, drawn_to_be_checked):
-                print(f"Answer: {drawn_to_be_checked[-1] * sum(get_left_over_numbers(board, drawn_to_be_checked))}")
-                return
+                return drawn_to_be_checked[-1] * sum(get_left_over_numbers(board, drawn_to_be_checked))
 
 
-def get_data() -> (list[str], list[list[int]]):
-    with open('inputs/day4.txt', 'r') as f:
+def get_data(file_input: str) -> (list[str], list[list[int]]):
+    with open(file_input, 'r') as f:
         data = f.readlines()
     data = [x.strip() for x in data]
     drawn = data[0].split(',')
@@ -64,4 +63,4 @@ def check_win(board: list[int], drawn: list[int]) -> bool:
 
 
 if __name__ == "__main__":
-    day4task1()
+    print(day4part1('input.txt'))

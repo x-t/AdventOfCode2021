@@ -1,5 +1,5 @@
-def day3task1():
-    _bytes = get_data()
+def day3part1(file_input: str) -> int:
+    _bytes = get_data(file_input)
 
     gamma_rate = []
     epsilon_rate = []
@@ -20,12 +20,12 @@ def day3task1():
     # Convert list of 1s and 0s of binary number to decimal
     gamma_dec = int(''.join(gamma_rate), 2)
     epsilon_dec = int(''.join(epsilon_rate), 2)
-    print(f"Gamma: {gamma_dec}\nEpsilon: {epsilon_dec}")
-    print(f"Answer: {gamma_dec * epsilon_dec}")
+    # print(f"Gamma: {gamma_dec}\nEpsilon: {epsilon_dec}")
+    return gamma_dec * epsilon_dec
 
 
-def get_data():
-    with open('inputs/day3.txt', 'r') as f:
+def get_data(file_input: str) -> list[list[str]]:
+    with open(file_input, 'r') as f:
         data = f.readlines()
 
     # Trim newlines
@@ -43,4 +43,4 @@ def get_data():
 
 
 if __name__ == "__main__":
-    day3task1()
+    print(day3part1('input.txt'))

@@ -5,13 +5,11 @@ computer. Part 2 is properly optimised.
 """
 
 
-def day6part1():
-    fishes = get_input()
-    for i in range(18):
-        print(f"Iteration {i}")
+def day6part1(file_name: str) -> int:
+    fishes = get_input(file_name)
+    for i in range(80):
         fishes = day_pass(fishes)
-    print(f"Answer: {len(fishes)}")
-    return
+    return len(fishes)
 
 
 def day_pass(fishes: list[int]) -> list[int]:
@@ -24,10 +22,12 @@ def day_pass(fishes: list[int]) -> list[int]:
     return fishes
 
 
-def get_input() -> list[int]:
-    f = open("inputs/day6.txt", "r").readlines()
-    return [int(x) for x in f[0].split(',')]
+def get_input(file_name: str) -> list[int]:
+    with open(file_name, 'r') as f:
+        data = f.readlines()
+    res = [int(x) for x in data[0].split(',')]
+    return res
 
 
 if __name__ == '__main__':
-    day6part1()
+    print(day6part1('input.txt'))

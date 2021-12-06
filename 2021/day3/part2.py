@@ -1,10 +1,10 @@
 import copy
 
-from day3task1 import get_data
+from part1 import get_data
 
 
-def day3task2():
-    _bytes = get_data()
+def day3part2(file_input: str) -> int:
+    _bytes = get_data(file_input)
 
     _bytes_copy = copy.deepcopy(_bytes)
     oxygen_generator_rating = ['0']
@@ -27,8 +27,8 @@ def day3task2():
     # Convert list of 1s and 0s of binary number to decimal
     oxygen_generator_rating_dec = int(''.join(oxygen_generator_rating), 2)
     co2_scrubber_rating_dec = int(''.join(co2_scrubber_rating), 2)
-    print(f"Oxygen: {oxygen_generator_rating_dec}\nCO2: {co2_scrubber_rating_dec}")
-    print(f"Answer: {oxygen_generator_rating_dec * co2_scrubber_rating_dec}")
+    # print(f"Oxygen: {oxygen_generator_rating_dec}\nCO2: {co2_scrubber_rating_dec}")
+    return oxygen_generator_rating_dec * co2_scrubber_rating_dec
 
 
 def count(_bytes, on_index, co2_mode=False):
@@ -68,4 +68,4 @@ def construct(_bytes, on_index):
 
 
 if __name__ == "__main__":
-    day3task2()
+    print(day3part2('input.txt'))

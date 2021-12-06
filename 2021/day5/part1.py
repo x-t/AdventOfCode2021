@@ -5,13 +5,12 @@ the right answer anyway.
 """
 
 
-def day5task1():
-    data = leave_only_straight_lines(get_data())
+def day5part1(file_input: str) -> int:
+    data = leave_only_straight_lines(get_data(file_input))
     matrix_size = get_matrix_size(data)
     matrix = [[0 for _ in range(matrix_size[0])] for _ in range(matrix_size[1])]
     matrix = draw_matrix(data, matrix)
-    print(f"Answer: {count_overlaps(matrix)}")
-    return
+    return count_overlaps(matrix)
 
 
 def draw_matrix(data: list[list[list[int]]], matrix: list[list[int]]) -> list[list[int]]:
@@ -23,8 +22,8 @@ def draw_matrix(data: list[list[list[int]]], matrix: list[list[int]]) -> list[li
     return matrix
 
 
-def get_data(dont_touch=False) -> list[list[list[int]]]:
-    with open('inputs/day5.txt', 'r') as f:
+def get_data(file_input: str, dont_touch=False) -> list[list[list[int]]]:
+    with open(file_input, 'r') as f:
         data = f.readlines()
     data = [x.strip() for x in data]
     # Split each element by spaces
@@ -71,4 +70,4 @@ def count_overlaps(matrix: list[list[int]]) -> int:
 
 
 if __name__ == "__main__":
-    day5task1()
+    print(day5part1('input.txt'))

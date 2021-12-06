@@ -1,9 +1,9 @@
-from day5task1 import get_matrix_size, get_data, leave_only_straight_lines, count_overlaps
+from part1 import get_matrix_size, get_data, leave_only_straight_lines, count_overlaps
 
 
-def day5task2():
-    straights = leave_only_straight_lines(get_data(True))
-    diagonals = leave_diagonals(get_data(True))
+def day5part2(file_input: str) -> int:
+    straights = leave_only_straight_lines(get_data(file_input, True))
+    diagonals = leave_diagonals(get_data(file_input, True))
     matrix_size = get_matrix_size(straights)
     matrix = [[0 for _ in range(matrix_size[0])] for _ in range(matrix_size[1])]
     matrix = proper_draw_straights(straights, matrix)
@@ -13,8 +13,7 @@ def day5task2():
 
     # for line in matrix:
     #     print(line)
-    print(f"Answer: {count_overlaps(matrix)}")
-    return
+    return count_overlaps(matrix)
 
 
 # Considering, this still draws them flipped, I don't know, but it doesn't touch the data.
@@ -85,4 +84,4 @@ def draw_diagonals(data: list[list[list[int]]], matrix: list[list[int]]) -> list
 
 
 if __name__ == "__main__":
-    day5task2()
+    print(day5part2('input.txt'))

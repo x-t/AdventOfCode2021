@@ -1,5 +1,5 @@
-def day1task1():
-    with open('inputs/day1.txt') as f:
+def day1part1(file_input: str) -> int:
+    with open(file_input) as f:
         data = f.readlines()
     data = [int(x.strip()) for x in data]
 
@@ -15,8 +15,8 @@ def day1task1():
         if data[i] > data[i - 1]:
             total += 1
 
-    print(total)
+    return total
 
 
 if __name__ == '__main__':
-    day1task1()
+    print(day1part1('input.txt'))
