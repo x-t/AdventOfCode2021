@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
       - name: Test Solutions
         run: |
-          bash -c 'for f in `find 2021 -type d -depth 1 -iname "day*"`; do (cd $f; python -m unittest) || exit 1; done'
+          bash -c 'for f in `find 2021 -type d -iname "day*"`; do (pushd $f; python3.9 -m unittest) || exit 1; done
